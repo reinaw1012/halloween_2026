@@ -13,7 +13,7 @@ The script lives in `src/story/routes/a.ts`, `b.ts`, and `jack.ts`. Each file ex
 } }
 ```
 
-Add conversations to the route's phone in `src/story/phoneConfigs.ts`. Each thread declares its app (`messages` or `messenger`), participant IDs, title, initial preview, timestamp, and optional `group`, `unread`, `pinned`, or `photo` fields. Add each participant's contact record there too. A contact can also have a `photo`. Put image files in `public/images/avatars/` and use paths such as `images/avatars/reina.jpg`; see [ASSETS.md](ASSETS.md). The `PhoneConfig` object also controls battery, signal bars, Wi-Fi, mute, unread counts, flashlight, and wallpaper. To add a new phone, add a `PhoneConfig`, a route file, and register the route in `src/story/engine.ts`; landing and progress types would also need extending.
+Add conversations to the route's phone in `src/story/phoneConfigs.ts`. Each thread declares its app (`messages` or `messenger`), participant IDs, title, initial preview, timestamp, and optional `group`, `groupIcon`, `unread`, `pinned`, or `photo` fields. For group chats, `groupIcon` supplies an emoji in the inbox and chat header; `photo` can provide an image instead. Add each participant's contact record there too. A contact can also have a `photo`. Put image files in `public/images/avatars/` and use paths such as `images/avatars/reina.jpg`; see [ASSETS.md](ASSETS.md). The `PhoneConfig` object also controls battery, signal bars, Wi-Fi, mute, unread counts, flashlight, and wallpaper. To add a new phone, add a `PhoneConfig`, a route file, and register the route in `src/story/engine.ts`; landing and progress types would also need extending.
 
 ## Populating Messenger inboxes
 

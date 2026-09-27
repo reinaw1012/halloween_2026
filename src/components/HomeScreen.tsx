@@ -8,7 +8,7 @@ export function HomeScreen({progress,onSelect,onReset}:{progress:Progress;onSele
       <div className="eyebrow">ARE WE TOO RELIANT ON OUR PHONES?</div>
       <h1>Gaslight, Gatekeep, Glitch</h1>
       <p className="date">October 31, 2026</p>
-      <p className="intro">Two girls. Two phones. Two versions of the same night. Choose where to begin.</p>
+      <p className="intro">Two girls, two phones, two versions of the same night. Choose where to begin.</p>
       <div className="route-grid">
         {(['b','a','jack'] as RouteId[]).map(id => {
           const phone=phones[id], unlocked=canOpen(id,progress), done=progress[`${id}Completed`]

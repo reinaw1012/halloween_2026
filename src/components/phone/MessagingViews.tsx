@@ -3,14 +3,15 @@ import type { AppId, PhoneConfig, PhoneView, StoryMessage, Thread } from '../../
 import { PhoneIcon } from './PhoneIcon'
 import { imageUrl } from '../../story/imageUrl'
 
-export function Avatar({ name, initials, color, photo, active = false }: {
+export function Avatar({ name, initials, color, photo, active = false, group = false }: {
   name: string
   initials: string
   color: string
   photo?: string
   active?: boolean
+  group?: boolean
 }) {
-  return <span className={`avatar ${active ? 'avatar--active' : ''}`} style={{ backgroundColor: color }} aria-label={name}>
+  return <span className={`avatar ${active ? 'avatar--active' : ''} ${group ? 'avatar--group' : ''}`} style={{ backgroundColor: color }} aria-label={name}>
     {photo ? <img src={imageUrl(photo)} alt="" /> : initials}
   </span>
 }
@@ -23,7 +24,7 @@ function InboxRow({ phone, thread, messages }: { phone: PhoneConfig; thread: Thr
   const recent = messages.filter(message => message.threadId === thread.id).at(-1)
   const contact = getOtherContact(phone, thread)
   return <div className={`inbox-row ${thread.pinned ? 'inbox-row--pinned' : ''}`}>
-    <Avatar name={thread.title} initials={thread.group ? '••' : contact?.initials ?? '?'} color={contact?.color ?? '#85859b'} photo={thread.photo ?? contact?.photo} />
+    <Avatar name={thread.title} initials={thread.group ? thread.groupIcon ?? '••' : contact?.initials ?? '?'} color={contact?.color ?? '#85859b'} photo={thread.photo ?? contact?.photo} group={thread.group} />
     <div className="inbox-row__text">
       <strong>{thread.title}{thread.pinned && thread.app === 'messages' ? '  ·  Pinned' : ''}</strong>
       <span>{recent?.text ?? thread.preview}</span>
@@ -79,8 +80,8 @@ function ThreadHeader({ thread, phone }: { thread: Thread; phone: PhoneConfig })
   </div>
   return <div className="thread-header">
     <span className="back-glyph" aria-hidden="true">‹</span>
-    <Avatar name={thread.title} initials={thread.group ? '••' : contact?.initials ?? '?'} color={contact?.color ?? '#85859b'} photo={thread.photo ?? contact?.photo} />
-    <div><strong>{thread.title}</strong><small>{thread.unknown ? 'No contact details' : thread.group ? thread.participants.map(id => phone.contacts[id]?.name ?? id.toUpperCase()).join(', ') : 'Conversation'}</small></div>
+    <Avatar name={thread.title} initials={thread.group ? thread.groupIcon ?? '••' : contact?.initials ?? '?'} color={contact?.color ?? '#85859b'} photo={thread.photo ?? contact?.photo} group={thread.group} />
+    <div><strong>{thread.title}</strong><small>{thread.unknown ? 'No contact details' : thread.group ? thread.participants.map(id => id === phone.id ? phone.label : phone.contacts[id]?.name ?? id).join(', ') : 'Conversation'}</small></div>
   </div>
 }
 
@@ -89,12 +90,12 @@ function MessageBubble({ message, phone, group, threadPhoto }: { message: StoryM
   const sender = phone.contacts[message.sender]?.name ?? message.sender
   const isMessenger = message.app === 'messenger'
   const contact = phone.contacts[message.sender]
-  const isGroupMessage = group && !own && !isMessenger
-  return <div className={`bubble-row ${own ? 'bubble-row--own' : ''} ${isMessenger ? 'bubble-row--messenger' : ''} ${isGroupMessage ? 'bubble-row--group' : ''}`}>
-    {isGroupMessage ? <span className="bubble-row__sender">{sender}</span> : null}
+  const isIncomingIMessage = !own && !isMessenger
+  return <div className={`bubble-row ${own ? 'bubble-row--own' : ''} ${isMessenger ? 'bubble-row--messenger' : ''} ${isIncomingIMessage ? 'bubble-row--imessage' : ''}`}>
+    {isIncomingIMessage ? <span className="bubble-row__sender">{sender}</span> : null}
     <div className="bubble-row__line">
       {isMessenger && !own ? <Avatar name={sender} initials={contact?.initials ?? '?'} color={contact?.color ?? '#85859b'} photo={threadPhoto ?? contact?.photo} /> : null}
-      {isGroupMessage ? <Avatar name={sender} initials={contact?.initials ?? '?'} color={contact?.color ?? '#85859b'} photo={contact?.groupPhoto ?? contact?.photo} /> : null}
+      {isIncomingIMessage ? <Avatar name={sender} initials={contact?.initials ?? '?'} color={contact?.color ?? '#85859b'} photo={group ? contact?.groupPhoto ?? contact?.photo : threadPhoto ?? contact?.photo} /> : null}
       <div className={`bubble ${own ? 'bubble--own' : ''} ${message.shadow ? 'bubble--shadow' : ''} ${message.compromised ? 'bubble--compromised' : ''}`}>
         <span>{message.text}</span>
         {message.reaction ? <em>{message.reaction}</em> : null}

@@ -1,7 +1,7 @@
 export type RouteId = 'a' | 'b' | 'jack'
 export type AppId = 'messages' | 'messenger'
 export type Contact = { id: string; name: string; initials: string; color: string; photo?: string; groupPhoto?: string }
-export type Thread = { id: string; app: AppId; title: string; participants: string[]; preview: string; time: string; photo?: string; unread?: number; pinned?: boolean; group?: boolean; unknown?: boolean }
+export type Thread = { id: string; app: AppId; title: string; participants: string[]; preview: string; time: string; photo?: string; groupIcon?: string; unread?: number; pinned?: boolean; group?: boolean; unknown?: boolean }
 export type PhoneConfig = { id: RouteId; label: string; role: string; battery: number; signalBars: 1 | 2 | 3 | 4; wifi: boolean; muted: boolean; unreadMessages: number; unreadVoicemails: number; flashlight: boolean; wallpaper: string; contacts: Record<string, Contact>; threads: Thread[] }
 export type StoryMessage = { id: string; threadId: string; sender: string; text: string; timestamp: string; app: AppId; status?: 'sent' | 'delivered' | 'read' | 'not-delivered'; reaction?: string; compromised?: boolean; shadow?: boolean; disappears?: boolean; animation?: 'quiet' | 'pop' }
 type Base = { id: string; cue: string }

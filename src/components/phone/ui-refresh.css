@@ -54,14 +54,15 @@ body { min-width: 0; }
 
 /* Keep app controls in step with the larger text and frame. */
 .phone .avatar { width: 48px; height: 48px; }
+.phone .avatar--group { font-size: 1.35em; }
 .phone .thread-header .avatar { width: 42px; height: 42px; }
 .phone .inbox-row { min-height: 82px; gap: 13px; }
 .phone .thread-header { min-height: 72px; }
 .phone .bubble { padding: 12px 15px; }
-.phone .bubble-row--group { max-width: 91%; }
-.phone .bubble-row--group .bubble-row__line > .avatar { width: 32px; height: 32px; font-size: .7em; }
+.phone .bubble-row--imessage { max-width: 91%; }
+.phone .bubble-row--imessage .bubble-row__line > .avatar { width: 32px; height: 32px; font-size: .7em; }
 .bubble-row__sender { margin-left: 40px; color: #909198; font-size: .7em; line-height: 1.2; }
-.bubble-row--group > small { padding-left: 40px; }
+.bubble-row--imessage > small { padding-left: 40px; }
 .phone--messenger .bubble-row--messenger .bubble-row__line > .avatar { width: 35px; height: 35px; font-size: .75em; }
 .phone--messenger .bubble-row--messenger:not(.bubble-row--own) > small { padding-left: 42px; }
 .phone .composer { gap: 11px; padding: 10px 16px 24px; }
@@ -119,6 +120,7 @@ body { min-width: 0; }
 .phone--jack .notification { font-size: 2em; }
 .phone--jack .thread-view__date,
 .phone--jack .bubble-row > small { font-size: 1.3em; }
+.phone--jack .bubble-row__sender { font-size: 1.4em; }
 .phone--jack .inbox-row__meta b {
   min-width: 30px;
   height: 30px;
@@ -167,7 +169,7 @@ body { min-width: 0; }
 }
 
 .status-bar__left time { font-variant-numeric: tabular-nums; }
-.status-mute { width: 18px; height: 18px; }
+.status-mute { width: 23px; height: 23px; }
 .status-location { width: 21px; height: 21px; }
 .status-wifi { width: 18px; height: 15px; overflow: visible; }
 .phone--jack .status-bar__icons { gap: 10px; }

@@ -16,8 +16,12 @@ function LocationIcon() {
 
 function MuteIcon() {
   return <svg className="status-mute" viewBox="0 0 24 24" role="img" aria-label="Muted">
-    <path d="M8 17h8l-1.4-2V9a2.6 2.6 0 0 0-5.2 0v6L8 17Zm2.7 2h2.6" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M4 4 20 20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+    <mask id="mute-bell-cut"><rect width="24" height="24" fill="white"/><path d="M3 2.5 21 21" stroke="black" strokeWidth="5"/></mask>
+    <g mask="url(#mute-bell-cut)" fill="currentColor">
+      <path d="M12 2.5c-3.2 0-5.4 2.4-5.4 5.7v4.3c0 1.3-.5 2.5-1.4 3.5L3.8 17.5c-.5.6-.1 1.5.7 1.5h15c.8 0 1.2-.9.7-1.5L18.8 16c-.9-1-1.4-2.2-1.4-3.5V8.2c0-3.3-2.2-5.7-5.4-5.7Z"/>
+      <path d="M9.1 20h5.8a3 3 0 0 1-5.8 0Z"/>
+    </g>
+    <path d="M3 2.5 21 21" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
   </svg>
 }
 
