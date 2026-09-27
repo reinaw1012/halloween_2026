@@ -1,0 +1,501 @@
+/* Landing copy and cards */
+body { min-width: 0; }
+
+.landing--photo {
+  background-image: linear-gradient(90deg, rgba(5, 8, 19, .75), rgba(5, 8, 19, .55)), var(--landing-photo);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.landing--photo .intro { color: #ddd8d2; }
+.landing--photo .progress-note { color: #c9c2bd; }
+
+@media (max-width: 700px) {
+  .landing--photo {
+    background-image: linear-gradient(180deg, rgba(5, 8, 19, .72), rgba(5, 8, 19, .8)), var(--landing-photo);
+  }
+}
+
+.landing h1 {
+  max-width: none;
+  font-size: clamp(1.25rem, 5vw, 4.7rem);
+  letter-spacing: -.065em;
+  line-height: .98;
+  white-space: nowrap;
+}
+
+.landing .route-card__letter,
+.landing .route-card--b .route-card__letter,
+.landing .route-card--jack .route-card__letter {
+  font-size: clamp(2.2rem, 3.7vw, 3.7rem);
+  letter-spacing: -.07em;
+}
+
+@media (max-width: 700px) {
+  .landing .route-card__letter,
+  .landing .route-card--b .route-card__letter,
+  .landing .route-card--jack .route-card__letter { font-size: 2.8rem; }
+}
+
+/* The phone grows toward 1.5x its original dimensions where the viewport permits. */
+.phone { font-size: 16px; }
+
+@media (max-width: 700px) {
+  .phone { width: 100%; }
+}
+
+@media (min-width: 701px) {
+  .phone {
+    width: min(585px, calc((100svh - 64px) * .76), calc(100vw - 36px));
+    height: min(1185px, calc(100svh - 64px));
+    font-size: 20px;
+  }
+}
+
+/* Keep app controls in step with the larger text and frame. */
+.phone .avatar { width: 48px; height: 48px; }
+.phone .thread-header .avatar { width: 42px; height: 42px; }
+.phone .inbox-row { min-height: 82px; gap: 13px; }
+.phone .thread-header { min-height: 72px; }
+.phone .bubble { padding: 12px 15px; }
+.phone .bubble-row--group { max-width: 91%; }
+.phone .bubble-row--group .bubble-row__line > .avatar { width: 32px; height: 32px; font-size: .7em; }
+.bubble-row__sender { margin-left: 40px; color: #909198; font-size: .7em; line-height: 1.2; }
+.bubble-row--group > small { padding-left: 40px; }
+.phone--messenger .bubble-row--messenger .bubble-row__line > .avatar { width: 35px; height: 35px; font-size: .75em; }
+.phone--messenger .bubble-row--messenger:not(.bubble-row--own) > small { padding-left: 42px; }
+.phone .composer { gap: 11px; padding: 10px 16px 24px; }
+.phone .composer > div { padding: 9px 13px; }
+.message-wrap--own { display: flex; justify-content: flex-end; }
+.phone .phone-home__apps > span { border-radius: 18px; padding: 17px 0; }
+.phone .inbox__search { padding: 12px; }
+.phone--messenger .messenger-active__person .avatar { width: 64px; height: 64px; }
+.phone--messenger .messenger-active__create { width: 64px; height: 64px; }
+.phone--messenger .inbox-row .avatar { width: 60px; height: 60px; }
+.phone--messenger .messenger-thread-header .avatar { width: 44px; height: 44px; }
+.phone--messenger .messenger-thread-header__actions svg { width: 29px; height: 29px; }
+.phone--messenger .messenger-inbox__tool svg,
+.phone--messenger .messenger-inbox__tabs svg { width: 27px; height: 27px; }
+.phone--messenger .messenger-composer svg { width: 26px; height: 26px; }
+.phone--messenger .messenger-composer__plus { width: 28px; height: 28px; }
+.phone--findMy .find-map__tools span { width: 44px; height: 44px; }
+.phone--findMy .find-map__person { width: 74px; height: 74px; }
+.phone--findMy .find-sheet__icon { width: 34px; height: 34px; }
+
+/* Notes uses the bright paper, gold controls, and anchored toolbar of iOS Notes. */
+.phone--notes .phone__screen,
+.phone--notes .status-bar { background: #fff; }
+.phone--notes .notes-screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  padding: 0 23px;
+  background: #fff;
+  color: #292b30;
+}
+.notes-screen__toolbar { display: flex; align-items: center; justify-content: space-between; min-height: 52px; color: #d1a122; }
+.notes-screen__back { display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; font-size: 1.04em; }
+.notes-screen__back b { font-size: 2em; line-height: .5; font-weight: 400; transform: translateY(-2px); }
+.notes-screen__actions { display: flex; align-items: center; gap: 13px; }
+.notes-screen__actions svg { width: 22px; height: 22px; }
+.notes-screen__date { align-self: center; color: #9b9da3; font-size: .65em; margin-top: -3px; }
+.notes-screen__body { padding-top: 25px; }
+.notes-screen__body h2 { margin: 0 0 12px; font-size: 1.25em; line-height: 1.2; }
+.notes-screen__body p { margin: 0; font-size: .92em; line-height: 1.5; white-space: pre-line; }
+.notes-screen__bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; min-height: 60px; padding: 0 2px 15px; color: #d1a122; }
+.notes-screen__bottom svg { width: 24px; height: 24px; }
+
+/* Jack's words are deliberately twice normal size; app geometry stays shared. */
+.phone--jack .status-bar time { font-size: 1.3em; }
+.phone--jack .inbox__title,
+.phone--jack .inbox__search,
+.phone--jack .inbox-row__text,
+.phone--jack .inbox-row__meta,
+.phone--jack .thread-header > div,
+.phone--jack .bubble,
+.phone--jack .typing,
+.phone--jack .composer > div,
+.phone--jack .notification { font-size: 2em; }
+.phone--jack .thread-view__date,
+.phone--jack .bubble-row > small { font-size: 1.3em; }
+.phone--jack .inbox-row__meta b {
+  min-width: 30px;
+  height: 30px;
+  padding: 0;
+  font-size: .5em;
+  line-height: 1;
+}
+.phone--jack .thread-view__messages { padding-left: 28px; padding-right: 28px; }
+.phone--jack .thread-header .avatar,
+.phone--jack .inbox-row .avatar { width: 58px; height: 58px; font-size: 1.2em; }
+.phone--jack .composer { gap: 8px; }
+.phone--jack .composer > div { min-width: 0; overflow: hidden; white-space: nowrap; }
+.phone--jack .composer > span:first-child,
+.phone--jack .composer > span:last-child {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  font-size: 2em;
+  line-height: 1;
+}
+.phone--jack .composer > span:first-child { font-size: 2.4em; font-weight: 600; }
+.phone--jack .composer > span:last-child { font-size: 1.4em; }
+.phone--jack .finish-overlay p { font-size: 1.5em; }
+.phone--jack .finish-overlay h2 { font-size: 3em; }
+.phone--jack .finish-overlay button { font-size: 1.25em; white-space: nowrap; }
+
+/* iPhone-style status information */
+.phone .status-bar {
+  height: 44px;
+  min-height: 44px;
+  padding: 7px 38px 0;
+  font-size: .94em;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -.025em;
+}
+
+.status-bar__left,
+.status-bar__icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-bar__left time { font-variant-numeric: tabular-nums; }
+.status-mute { width: 18px; height: 18px; }
+.status-location { width: 21px; height: 21px; }
+.status-wifi { width: 18px; height: 15px; overflow: visible; }
+.phone--jack .status-bar__icons { gap: 10px; }
+.phone--jack .signal-bars { transform: scale(1.35); transform-origin: right center; margin-right: 4px; }
+.phone--jack .status-wifi { width: 24px; height: 20px; }
+.phone--jack .battery { width: 38px; height: 19px; font-size: .8em; }
+.phone--jack .battery::after { top: 6px; height: 6px; }
+
+@media (max-width: 700px) {
+  .phone .status-bar { padding-left: 30px; padding-right: 30px; }
+  .phone--jack .status-bar { padding-left: 22px; padding-right: 22px; }
+}
+
+.flashlight-dock {
+  position: absolute;
+  z-index: 8;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 43%;
+  height: 34px;
+  border-radius: 100px;
+  background: #050507;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  color: #dfd9ff;
+  pointer-events: none;
+}
+.flashlight-dock svg { width: 15px; height: 22px; filter: drop-shadow(0 0 5px #c9bcff) drop-shadow(0 0 12px #a79be6); }
+@media (max-width: 700px) {
+  .flashlight-dock { width: 27%; padding-left: 12px; }
+}
+
+.signal-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.signal-bars i {
+  width: 3px;
+  border-radius: 1.5px 1.5px 0 0;
+  display: block;
+}
+
+.signal-bars i:nth-child(1) { height: 5px; }
+.signal-bars i:nth-child(2) { height: 8px; }
+.signal-bars i:nth-child(3) { height: 11px; }
+.signal-bars i:nth-child(4) { height: 14px; }
+.signal-bars__active { background: currentColor; }
+.signal-bars__inactive { background: #b9bcc1; }
+
+.phone .battery {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 15px;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  color: #181a1d;
+  font-size: .68em;
+  font-weight: 800;
+  isolation: isolate;
+}
+
+.phone .battery::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 4px;
+  width: 2px;
+  height: 5px;
+  border-radius: 0 2px 2px 0;
+  background: currentColor;
+}
+
+.battery__fill {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  bottom: 1px;
+  max-width: calc(100% - 2px);
+  background: #25272b;
+  border-radius: 2px;
+  z-index: -1;
+}
+
+.battery__text { color: #fff; line-height: 1; }
+.phone .battery--low { color: #dd3438; border-color: #dd3438; }
+.battery--low .battery__fill { background: #dd3438; }
+.battery--low .battery__text { color: #dd3438; margin-left: 5px; }
+
+/* Messenger reference: large blue wordmark, stories, filters, and light blue chat header. */
+.phone--messenger .messenger-inbox__header h2 {
+  color: #0866ff;
+  font-size: 2.1em;
+  font-weight: 800;
+  letter-spacing: -.065em;
+}
+
+.phone--messenger .messenger-inbox__tool {
+  background: transparent;
+  color: #13151a;
+  font-size: 1.4em;
+}
+
+.messenger-active__create {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #e6e8eb;
+  color: #17191d;
+  font-size: 1.8em;
+}
+
+.messenger-inbox__search { display: flex; align-items: center; gap: 7px; }
+.messenger-inbox__search span { margin-left: 0; }
+
+.messenger-inbox__filters {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.messenger-inbox__filters span {
+  padding: 7px 13px;
+  border-radius: 99px;
+  background: #f1f2f5;
+  color: #27292e;
+  font-size: .82em;
+  font-weight: 650;
+}
+
+.messenger-inbox__filters .is-selected {
+  background: #e7f2ff;
+  color: #0866ff;
+}
+
+.phone--messenger .messenger-thread-header {
+  background: linear-gradient(105deg, #fff 15%, #d9f5ff 100%);
+  min-height: 75px;
+}
+
+.messenger-thread-header__title strong { font-size: 1.12em; }
+.phone--messenger .messenger-thread-header__actions { font-size: 1.55em; gap: 14px; }
+.phone--messenger .thread-view__messages::before { content: ''; margin-top: auto; }
+.phone--messenger .bubble-row--messenger .bubble--own { background: #0785ff; }
+
+/* Full-screen call scenes */
+.phone--call .status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  background: transparent;
+  color: #fff;
+}
+
+.phone--call .battery { color: #fff; border-color: #fff; }
+.phone--call .battery__fill { background: #fff; }
+.phone--call .battery__text { color: #17202d; }
+.phone--call .battery--low { color: #ff777b; border-color: #ff777b; }
+.phone--call .battery--low .battery__fill { background: #ff777b; }
+.phone--call .battery--low .battery__text { color: #fff; }
+
+.phone--call .phone__content { flex: 1; }
+.phone--call .home-indicator { background: #fff; }
+.phone--call .call-screen {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  color: #fff;
+  text-align: left;
+  padding: 0;
+  background: #132544;
+}
+
+.call-screen::before {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  filter: blur(40px);
+  background:
+    radial-gradient(circle at 78% 85%, #075f5d 0, transparent 38%),
+    radial-gradient(circle at 13% 58%, #4b6464 0, transparent 40%),
+    radial-gradient(circle at 70% 20%, #0c2d68 0, transparent 48%),
+    #15213d;
+}
+
+.phone--call-failed .call-screen::before {
+  background:
+    radial-gradient(circle at 10% 68%, #066d63 0, transparent 33%),
+    radial-gradient(circle at 72% 82%, #662234 0, transparent 46%),
+    radial-gradient(circle at 18% 17%, #552035 0, transparent 35%),
+    #181b23;
+}
+
+.incoming-call__contact,
+.incoming-call__bottom,
+.failed-call__heading,
+.failed-call__actions { position: relative; z-index: 1; }
+
+.incoming-call__contact {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 110px 0 0 16%;
+}
+
+.incoming-call__avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: #f57569;
+  font-size: 1.8em;
+}
+
+.incoming-call__contact h2,
+.failed-call__heading h2 {
+  margin: 0;
+  font-size: 1.75em;
+  font-weight: 400;
+  line-height: 1.12;
+  color: #fff;
+}
+
+.incoming-call__contact p,
+.failed-call__heading p { margin: 5px 0 0; color: #bbc1cd; font-size: 1em; }
+.incoming-call__bottom { position: absolute; left: 0; right: 0; bottom: clamp(92px, 13%, 170px); padding: 0; }
+.incoming-call__quick,
+.failed-call__actions { display: flex; align-items: flex-start; justify-content: space-between; }
+.incoming-call__primary { display: flex; align-items: flex-start; justify-content: space-between; }
+.incoming-call__quick,
+.incoming-call__primary { width: min(70%, 390px); margin-left: auto; margin-right: auto; }
+.incoming-call__quick { margin-bottom: 40px; }
+.call-action { display: flex; flex-direction: column; align-items: center; gap: 11px; min-width: 88px; font-size: .9em; }
+.incoming-call__quick .call-action { min-width: 88px; }
+.call-action__circle { display: grid; place-items: center; width: 82px; height: 82px; border-radius: 50%; font-size: 2em; line-height: 1; }
+.call-action__circle svg { width: 42px; height: 42px; }
+.incoming-call__quick .call-action__circle { width: 54px; height: 54px; font-size: 1.6em; }
+.incoming-call__quick .call-action__circle svg { width: 30px; height: 30px; }
+.call-action__circle--red { background: #ff453a; transform: rotate(135deg); }
+.call-action__circle--green { background: #31c95c; }
+.call-action__circle--gray { background: #9a9a96; font-size: 2.5em; font-weight: 300; }
+.failed-call__heading { padding: 145px 20px 0; text-align: center; }
+.failed-call__heading h2 { font-size: 2.15em; }
+.failed-call__heading p { font-size: 1.35em; }
+.failed-call__actions { position: absolute; bottom: clamp(92px, 13%, 170px); left: 0; right: 0; width: min(70%, 390px); margin: 0 auto; padding: 0; }
+
+@media (min-width: 701px) {
+  .incoming-call__avatar { width: 108px; height: 108px; }
+  .incoming-call__quick .call-action { min-width: 108px; }
+  .call-action__circle { width: 108px; height: 108px; }
+  .call-action__circle svg { width: 52px; height: 52px; }
+  .incoming-call__quick .call-action__circle { width: 64px; height: 64px; }
+  .incoming-call__quick .call-action__circle svg { width: 36px; height: 36px; }
+}
+
+/* Find My inspired map and bottom sheet. No screenshot imagery or personal map data is used. */
+.phone--findMy .status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 7;
+  background: transparent;
+  color: #15191b;
+}
+
+.phone--findMy .phone__content { flex: 1; }
+.phone--findMy .find-screen { position: relative; flex: 1; min-height: 0; padding: 0; background: #e6efdc; overflow: hidden; }
+.find-map { position: absolute; inset: 0 0 28%; overflow: hidden; }
+.find-map__art { width: 100%; height: 100%; display: block; }
+.find-map__back { position: absolute; top: 53px; left: 16px; font-size: .9em; font-weight: 600; color: #24272b; }
+.find-map__tools { position: absolute; top: 68px; right: 15px; display: flex; flex-direction: column; color: #1983e4; background: #fff; border-radius: 12px; box-shadow: 0 3px 12px #5552; overflow: hidden; }
+.find-map__tools span { width: 44px; height: 44px; display: grid; place-items: center; }
+.find-map__tools svg { width: 23px; height: 23px; }
+.find-map__tools span + span { border-top: 1px solid #e8e9ec; }
+.find-map__person { position: absolute; top: 34%; left: 50%; transform: translateX(-50%); display: grid; place-items: center; width: 74px; height: 74px; background: #b3c9e1; color: #fff; border: 4px solid #fff; border-radius: 50%; box-shadow: 0 3px 10px #0003; font-weight: 800; font-size: 1.4em; }
+.find-map__person i { position: absolute; width: 13px; height: 13px; border: 2px solid #fff; border-radius: 50%; bottom: -12px; left: calc(50% - 6px); background: #1983e4; }
+.find-sheet { position: absolute; bottom: 0; left: 0; right: 0; height: 44%; min-height: 280px; overflow-y: auto; background: #fff; border-radius: 22px 22px 0 0; box-shadow: 0 -7px 18px #273d3133; padding: 8px 20px 24px; }
+.find-sheet__handle { width: 38px; height: 4px; border-radius: 4px; background: #c7c9c9; margin: 0 auto 16px; }
+.find-sheet__title { display: flex; justify-content: space-between; gap: 10px; align-items: flex-start; }
+.find-sheet__title h2 { margin: 0; color: #14171a; font-size: 1.2em; }
+.find-sheet__title p { margin: 5px 0 0; color: #8b8f91; font-size: .83em; }
+.find-sheet__title > span { display: grid; place-items: center; background: #f0f1f1; color: #808486; border-radius: 50%; width: 27px; height: 27px; flex: none; }
+.find-sheet__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 19px; }
+.find-sheet__cards > div { min-height: 112px; padding: 14px; border-radius: 10px; box-shadow: 0 2px 16px #00000012; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; color: #191b1d; font-size: .88em; }
+.find-sheet__icon { display: grid; place-items: center; border-radius: 50%; background: #31c45f; color: #fff; flex: none; }
+.find-sheet__icon svg { width: 19px; height: 19px; }
+.find-sheet__cards small { color: #85898b; }
+.find-sheet__notifications { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-height: 108px; margin-top: 14px; padding: 14px; border-radius: 10px; box-shadow: 0 2px 16px #00000012; color: #191b1d; font-size: .88em; }
+.find-sheet__icon--alert { background: #f43d69; }
+
+@media (max-width: 700px) {
+  .find-sheet { padding-left: 16px; padding-right: 16px; }
+  .find-sheet__cards > div { min-height: 96px; padding: 11px; }
+  .find-sheet__notifications { min-height: 90px; padding: 11px; }
+}
+
+@media (max-height: 800px) {
+  .find-sheet { min-height: 280px; padding-bottom: 8px; }
+  .find-sheet__handle { margin-bottom: 10px; }
+  .find-sheet__cards { margin-top: 12px; }
+  .find-sheet__cards > div { min-height: 82px; padding: 8px; gap: 4px; }
+  .find-sheet__notifications { min-height: 60px; margin-top: 10px; padding: 8px; gap: 3px; }
+  .phone--findMy .find-sheet__icon { width: 25px; height: 25px; }
+  .find-sheet__icon svg { width: 16px; height: 16px; }
+}
+
+@media (max-height: 690px) {
+  .incoming-call__contact { padding-top: 85px; }
+  .incoming-call__bottom { bottom: 70px; }
+  .failed-call__heading { padding-top: 115px; }
+  .failed-call__actions { bottom: 70px; }
+  .find-sheet { min-height: 280px; }
+}

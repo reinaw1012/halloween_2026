@@ -1,0 +1,356 @@
+/* Messenger uses its own visual language; Messages keeps the generic phone styles. */
+.phone--messenger .phone__screen,
+.phone--messenger .status-bar {
+  background: #fff;
+}
+
+.phone--messenger .status-bar {
+  color: #16181c;
+}
+
+.messenger-inbox {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 15px 0;
+}
+
+.messenger-inbox__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 1px 16px;
+}
+
+.messenger-inbox__header .avatar {
+  width: 40px;
+  height: 40px;
+}
+
+.messenger-inbox__header h2 {
+  flex: 1;
+  margin: 0;
+  font-size: 1.85em;
+  letter-spacing: -.06em;
+  color: #15171b;
+}
+
+.messenger-inbox__tool {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f1f2f5;
+  color: #202127;
+  display: grid;
+  place-items: center;
+  font-size: 1.25em;
+}
+
+.messenger-inbox__search {
+  background: #f1f2f5;
+  border-radius: 99px;
+  padding: 9px 13px;
+  color: #666b73;
+  font-size: 1.1em;
+}
+
+.messenger-inbox__search span {
+  margin-left: 5px;
+  font-size: .85em;
+}
+
+.messenger-active {
+  display: flex;
+  gap: 18px;
+  padding: 19px 2px 17px;
+  overflow-x: auto;
+}
+
+.messenger-active__person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 64px;
+  max-width: 74px;
+  color: #33363e;
+  font-size: .75em;
+  white-space: nowrap;
+}
+
+.messenger-active__person .avatar {
+  width: 56px;
+  height: 56px;
+  font-size: 1.15em;
+}
+
+.messenger-active__person > span:last-child {
+  max-width: 74px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.avatar--active {
+  position: relative;
+  overflow: visible;
+}
+
+.avatar--active img {
+  border-radius: 50%;
+}
+
+.avatar--active::after {
+  content: '';
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  right: -1px;
+  bottom: 0;
+  border-radius: 50%;
+  background: #31a24c;
+  border: 2px solid white;
+}
+
+.messenger-inbox__section {
+  color: #777b82;
+  font-size: .68em;
+  letter-spacing: .13em;
+  font-weight: 700;
+  padding: 3px 2px 6px;
+}
+
+.phone--messenger .inbox-row {
+  border: 0;
+  min-height: 76px;
+  padding: 8px 1px;
+  background: #fff;
+}
+
+.phone--messenger .inbox-row .avatar {
+  width: 53px;
+  height: 53px;
+  font-size: 1.05em;
+}
+
+.phone--messenger .inbox-row__text strong {
+  font-size: 1.02em;
+  color: #15171b;
+}
+
+.phone--messenger .inbox-row__text span,
+.phone--messenger .inbox-row__meta {
+  color: #646a73;
+}
+
+.phone--messenger .inbox-row__meta b {
+  background: #0084ff;
+}
+
+.messenger-inbox__tabs {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  margin: auto -15px 0;
+  padding: 12px 0 19px;
+  background: #fff;
+  border-top: 1px solid #e5e6e9;
+  color: #777b82;
+}
+
+.messenger-inbox__tabs span {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 1.45em;
+}
+
+.messenger-inbox__tabs small {
+  font-size: .44em;
+  font-weight: 600;
+}
+
+.messenger-inbox__tabs .is-selected {
+  color: #0084ff;
+}
+
+.phone--messenger .thread-view {
+  background: #fff;
+}
+
+.phone--messenger .messenger-thread-header {
+  background: #fff;
+  border-bottom: 1px solid #f0f0f2;
+  padding: 8px 10px 9px;
+  gap: 8px;
+  box-shadow: 0 2px 5px #12121208;
+  z-index: 1;
+}
+
+.messenger-thread-header .back-glyph {
+  color: #0084ff;
+  font-size: 2.5em;
+  margin-right: 1px;
+}
+
+.messenger-thread-header .avatar {
+  width: 38px;
+  height: 38px;
+}
+
+.messenger-thread-header__title {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.messenger-thread-header__title strong {
+  font-size: .92em;
+}
+
+.messenger-thread-header__title small {
+  font-size: .68em;
+  color: #697079;
+}
+
+.phone--messenger .messenger-thread-header__actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  color: #0084ff;
+  font-size: 1.35em;
+}
+
+.phone--messenger .thread-view__messages {
+  padding: 12px 9px 8px;
+  gap: 8px;
+}
+
+.messenger-thread-intro {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding-bottom: 24px;
+  color: #17181d;
+}
+
+.messenger-thread-intro .avatar {
+  width: 64px;
+  height: 64px;
+  font-size: 1.35em;
+  margin-bottom: 3px;
+}
+
+.messenger-thread-intro strong {
+  font-size: 1.12em;
+}
+
+.messenger-thread-intro small {
+  color: #858990;
+  font-size: .72em;
+}
+
+.bubble-row__line {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  max-width: 100%;
+}
+
+.bubble-row--messenger {
+  max-width: 91%;
+}
+
+.bubble-row--messenger .bubble-row__line > .avatar {
+  width: 23px;
+  height: 23px;
+  font-size: .58em;
+}
+
+.bubble-row--messenger .bubble {
+  background: #e4e6eb;
+  color: #17191e;
+  border-radius: 18px 18px 18px 5px;
+  padding: 9px 12px;
+}
+
+.bubble-row--messenger .bubble--own {
+  background: #0084ff;
+  color: #fff;
+  border-radius: 18px 18px 5px 18px;
+}
+
+.bubble-row--messenger > small {
+  padding-left: 30px;
+  color: #8a8d93;
+}
+
+.bubble-row--messenger.bubble-row--own > small {
+  padding-left: 0;
+}
+
+.phone--messenger .typing {
+  margin-left: 30px;
+  background: #e4e6eb;
+  color: #74777d;
+}
+
+.messenger-composer {
+  gap: 7px;
+  color: #0084ff;
+  padding: 8px 10px 20px;
+  background: #fff;
+}
+
+.messenger-composer__plus,
+.messenger-composer__media,
+.messenger-composer__like {
+  display: grid;
+  place-items: center;
+  flex: none;
+  font-size: 1.35em;
+  line-height: 1;
+}
+
+.messenger-composer__plus {
+  background: #0084ff;
+  color: #fff;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  font-size: 1.1em;
+}
+
+.messenger-composer > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 0;
+  color: #777b82;
+  background: #f1f2f5;
+  border: 0;
+  border-radius: 20px;
+  padding: 8px 11px;
+}
+
+.messenger-composer > div span {
+  color: #0084ff;
+  font-size: 1.35em;
+}
+
+.phone--messenger .messenger-composer > div span:last-child {
+  background: transparent;
+  color: #0084ff;
+  padding: 0;
+}
+
+.phone--messenger .messenger-composer > span:last-child {
+  background: none;
+  color: #0084ff;
+  padding: 0;
+}
