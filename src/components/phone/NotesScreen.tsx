@@ -24,7 +24,7 @@ export function NotesScreen({ view }: { view: PhoneView }) {
         <NoteIcon name="undo" /><NoteIcon name="redo" /><NoteIcon name="share" /><NoteIcon name="more" />
       </div>
     </div>
-    <span className="notes-screen__date">October 31, 2026 at 9:46</span>
+    <span className="notes-screen__date">October 31, 2026 at {view.time}</span>
     <div className="notes-screen__body">
       <h2>{view.notes?.title}</h2>
       <p>{view.notes?.body}</p>

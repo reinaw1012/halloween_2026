@@ -28,7 +28,7 @@ function MuteIcon() {
 export function StatusBar({ phone, view, glitch }: { phone: PhoneConfig; view: PhoneView; glitch: boolean }) {
   const activeBars = Math.max(0, phone.signalBars - (glitch ? 1 : 0))
   return <div className={`status-bar ${view.screen === 'call' ? 'status-bar--on-call' : ''} ${view.screen === 'findMy' ? 'status-bar--on-map' : ''}`}>
-    <span className="status-bar__left"><time>9:41</time>{phone.muted ? <MuteIcon /> : null}{view.screen === 'findMy' ? <LocationIcon /> : null}</span>
+    <span className="status-bar__left"><time>{view.time.replace(/ [AP]M$/, '')}</time>{phone.muted ? <MuteIcon /> : null}{view.screen === 'findMy' ? <LocationIcon /> : null}</span>
     <span className="status-bar__icons">
       <span className="signal-bars" role="img" aria-label={`${activeBars} of 4 signal bars`}>
         {[1, 2, 3, 4].map(bar => <i key={bar} className={bar <= activeBars ? 'signal-bars__active' : 'signal-bars__inactive'} />)}

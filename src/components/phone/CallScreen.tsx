@@ -9,14 +9,18 @@ export function CallScreen({ view }: { view: PhoneView }) {
   const call = view.call
   if (!call) return null
   const incoming = call.direction === 'incoming' && call.outcome === 'ringing'
+  const connecting = call.outcome === 'connected' || (call.direction === 'outgoing' && call.outcome === 'ringing')
 
-  return <div className={`call-screen ${incoming ? 'call-screen--incoming' : 'call-screen--failed'}`}>
+  return <div className={`call-screen ${incoming ? 'call-screen--incoming' : connecting ? 'call-screen--connected' : 'call-screen--failed'}`}>
     {incoming ? <>
-      <div className="incoming-call__contact"><span className="incoming-call__avatar">{call.contact.slice(0, 1)}</span><div><h2>{call.contact}</h2><p>mobile</p></div></div>
+      <div className="incoming-call__contact"><span className="incoming-call__avatar">{call.contact.slice(0, 1)}</span><div><h2>{call.contact}</h2><p>{call.service ?? 'mobile'}</p></div></div>
       <div className="incoming-call__bottom">
         <div className="incoming-call__quick"><CallAction icon="clock" label="Remind Me" /><CallAction icon="message" label="Message" /></div>
         <div className="incoming-call__primary"><CallAction icon="phone" label="Decline" tone="red" /><CallAction icon="phone" label="Accept" tone="green" /></div>
       </div>
+    </> : connecting ? <>
+      <div className="failed-call__heading"><h2>{call.contact}</h2><p>{call.service ?? 'Call'} · {call.outcome === 'ringing' ? 'Calling…' : 'Connecting…'}</p></div>
+      <div className="failed-call__actions"><CallAction icon="phone" label="End Call" tone="red" /></div>
     </> : <>
       <div className="failed-call__heading"><h2>{call.contact}</h2><p>{call.outcome === 'declined' ? 'Call Declined' : 'Call Failed'}</p></div>
       <div className="failed-call__actions"><CallAction icon="close" label="Cancel" tone="gray" /><CallAction icon="phone" label="Call Back" tone="green" /></div>

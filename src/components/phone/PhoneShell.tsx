@@ -29,14 +29,14 @@ export function PhoneShell({ phone, view, beatId, complete, onExit }: Props) {
   const glitch = !!view.glitch && view.glitch.target === view.app
   const style = { '--wallpaper': phone.wallpaper } as CSSProperties
 
-  return <div className={`phone phone--${phone.id} phone--${view.app} phone--${view.screen} ${view.screen === 'call' && view.call?.outcome !== 'ringing' ? 'phone--call-failed' : ''} ${glitch ? 'phone--glitch' : ''}`} style={style}>
+  return <div className={`phone phone--${phone.id} phone--${view.app} phone--${view.screen} ${view.screen === 'call' && (view.call?.outcome === 'failed' || view.call?.outcome === 'declined') ? 'phone--call-failed' : ''} ${glitch ? 'phone--glitch' : ''}`} style={style}>
     <div className="phone__screen">
       <StatusBar phone={phone} view={view} glitch={glitch && view.glitch?.effect === 'signal'} />
-      {phone.flashlight ? <div className="flashlight-dock" role="img" aria-label="Flashlight on"><svg viewBox="0 0 24 32" aria-hidden="true"><path d="M6 3h12l-1.6 7H7.6L6 3Zm1.7 10h8.6l-1.3 3v12c0 1.1-.9 2-2 2h-2c-1.1 0-2-.9-2-2V16l-1.3-3Z" fill="currentColor"/></svg></div> : null}
+      {(view.flashlightOn ?? phone.flashlight) ? <div className="flashlight-dock" role="img" aria-label="Flashlight on"><svg viewBox="0 0 24 32" aria-hidden="true"><path d="M6 3h12l-1.6 7H7.6L6 3Zm1.7 10h8.6l-1.3 3v12c0 1.1-.9 2-2 2h-2c-1.1 0-2-.9-2-2V16l-1.3-3Z" fill="currentColor"/></svg></div> : null}
       <AnimatePresence mode="wait" initial={false}>
         <motion.div key={`${view.screen}-${view.app}-${view.threadId ?? ''}`} className="phone__content" initial={reduced ? false : { opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} transition={{ duration: reduced ? 0 : .18 }}>
           {view.screen === 'home' ? <HomeScreen /> : null}
-          {view.screen === 'inbox' ? <Inbox phone={phone} app={view.app} messages={view.messages} /> : null}
+          {view.screen === 'inbox' ? <Inbox phone={phone} app={view.app} messages={view.messages} previews={view.previews} threadVisibility={view.threadVisibility} lastActivity={view.lastActivity} /> : null}
           {view.screen === 'thread' ? <ThreadView phone={phone} view={view} reduced={reduced} /> : null}
           {view.screen === 'call' ? <CallScreen view={view} /> : null}
           {view.screen === 'notes' ? <NotesScreen view={view} /> : null}
